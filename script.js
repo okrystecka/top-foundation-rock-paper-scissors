@@ -4,6 +4,7 @@ const SCISSORS = 'scissors';
 const LOSE = 'losed'
 const WIN = 'win';
 const DRAW = 'Draw!';
+
 function getComputerChoice() {
     let randomValue = Math.floor(Math.random() * 3);
     switch (randomValue) {
@@ -25,18 +26,25 @@ function playRound(playerSelection, computerSelection = getComputerChoice()) {
     const player = playerSelection?.toLowerCase(); 
     const comp = computerSelection?.toLowerCase(); 
     if(player === comp) {
-        return DRAW;
+        console.log(DRAW);
+        return 0;
     }          
     if(player == ROCK && comp == SCISSORS 
         || player == PAPER && comp == ROCK
         || player == SCISSORS && comp == PAPER) {
-        return `You ${WIN}! ${player} beats ${comp}!`;
+        console.log(`You ${WIN}! ${player} beats ${comp}!`);
+        return 1;
     }
-    return `You ${LOSE}! ${comp} beats ${player}!`;
+    console.log(`You ${LOSE}! ${comp} beats ${player}!`);
+    return -1;
 }
 
 function playGame() {
-
+    let score = 0;
+    for (let i = 0; i < 5; i++) {
+        score += playRound(prompt("Whats your move?"));
+    }
+    return 'Your score: ' + score;
 }
 
-console.log(playRound('rock'));
+console.log(playGame());

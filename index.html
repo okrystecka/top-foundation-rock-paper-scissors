@@ -3,9 +3,20 @@
     <head>
         <meta charset="UTF-8">
         <title>Rock paper scissors!</title>
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
+        <h2>Let's play a game!</h2>
+        <div id='buttons' class="buttons">
+            <button id="rock">Rock!</button>
+            <button id="paper">Paper!</button>
+            <button id="scissors">Scissors!</button>
+        </div>
+        <div>
+            Current result:
+            <slot id="result"></slot>
+        </div>
+        <button id="reset">Reset</button>
         <script src="script.js"></script>
-        Hello there!
     </body>
 </html>
